@@ -13,12 +13,12 @@ interface Props {
 }
 
 const {
-  topper = 'Testimonials',
-  heading = 'What our customers say',
+  topper = 'Ervaringen',
+  heading = 'Wat onze klanten zeggen',
   reviews = [
-    { quote: 'They showed up on time, explained everything clearly, and finished the job faster than expected. Best service experience we\'ve had.', name: 'Sarah M.', location: 'Denver, CO', rating: 5 },
-    { quote: 'Honest pricing and top-notch work. I\'ve used them for three different projects now and they never disappoint.', name: 'James R.', location: 'Aurora, CO', rating: 5 },
-    { quote: 'Our emergency call was answered in minutes. They had the problem fixed before dinner. Truly dependable.', name: 'Linda K.', location: 'Lakewood, CO', rating: 5 },
+    { quote: 'Marlinco heeft een prachtige overkapping geplaatst in onze tuin. Van advies tot oplevering was alles top geregeld. Zeer tevreden!', name: 'Familie De Groot', location: 'Papendrecht', rating: 5 },
+    { quote: 'Onze oprit is volledig opnieuw bestraat. Netjes werk, op tijd klaar en een eerlijke prijs. Zeker een aanrader.', name: 'Peter V.', location: 'Dordrecht', rating: 5 },
+    { quote: 'Een mooie schutting laten plaatsen door Marlinco. Fijn contact, meedenkend en het resultaat is precies wat we wilden.', name: 'Sandra K.', location: 'Sliedrecht', rating: 5 },
   ],
 } = Astro.props;
 ---
@@ -33,8 +33,7 @@ const {
     <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
       {reviews.map(({ quote, name, location, rating = 5 }) => (
         <li class="flex flex-col rounded-lg border border-border bg-background p-6 shadow-sm">
-          <!-- Stars -->
-          <div class="mb-4 flex gap-0.5" aria-label={`Rated ${rating} out of 5 stars`}>
+          <div class="mb-4 flex gap-0.5" aria-label={`${rating} van 5 sterren`}>
             {Array.from({ length: 5 }).map((_, i) => (
               <svg
                 class:list={['size-5', i < rating ? 'text-accent' : 'text-border']}

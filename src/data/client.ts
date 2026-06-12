@@ -1,38 +1,30 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- * CLIENT DATA
- * ─────────────────────────────────────────────────────────────────────────────
- * Business-specific copy: name, phone, email, address, socials.
- * Imported by Header, Footer, Contact page, and Head/SEO components.
- *
- * No component should hardcode a business name or phone number —
- * everything comes from this file or brand.ts.
+ * CLIENT DATA — Marlinco
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const client = {
-  name: 'Small Business Starter',
-  email: 'hello@example.com',
-  phoneForTel: '555-867-5309',
-  phoneFormatted: '(555) 867-5309',
-  /** Business / contractor license number. Displayed in the header and footer
-   *  as a trust signal. Set to an empty string to hide it. */
-  license: 'Lic# 123456',
+  name: 'Marlinco',
+  email: 'mari@marlinco.nl',
+  phoneForTel: '06-26742521',
+  phoneFormatted: '(06) 26 74 25 21',
+  license: '',
   address: {
-    lineOne: '123 Main Street',
-    lineTwo: 'Suite 100',
-    city: 'Denver',
-    state: 'CO',
-    zip: '80206',
-    country: 'US',
-    mapLink: 'https://maps.app.goo.gl/example',
+    lineOne: 'Matena 22',
+    lineTwo: '',
+    city: 'Papendrecht',
+    state: 'Zuid-Holland',
+    zip: '3356 LG',
+    country: 'NL',
+    mapLink: 'https://maps.google.com/?q=Matena+22+3356+LG+Papendrecht',
   },
   socials: {
-    facebook: 'https://www.facebook.com/',
-    instagram: 'https://www.instagram.com/',
-    google: 'https://www.google.com/maps',
+    facebook: '',
+    instagram: '',
+    google: 'https://maps.google.com/?q=Matena+22+3356+LG+Papendrecht',
   },
-  domain: 'https://www.example.com',
+  domain: 'https://www.marlinco.nl',
 } as const;
 
 export type Client = typeof client;

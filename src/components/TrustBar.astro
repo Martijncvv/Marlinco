@@ -9,14 +9,14 @@ interface Props {
 }
 
 const { items = [
-  { label: 'Licensed' },
-  { label: 'Fully Insured' },
-  { label: 'Years Experience', value: '15+' },
-  { label: 'Jobs Completed',  value: '2,500+' },
+  { label: 'Jaar ervaring', value: '15+' },
+  { label: 'Gevestigd in Papendrecht' },
+  { label: 'Persoonlijke aanpak' },
+  { label: 'Tevreden klanten', value: '500+' },
 ] } = Astro.props;
 ---
 
-<section class="border-y border-border bg-surface" aria-label="Trust signals">
+<section class="border-y border-border bg-surface" aria-label="Vertrouwenssignalen">
   <div class="mx-auto max-w-site overflow-x-auto px-4 py-5 sm:px-6 sm:py-6">
     <ul class="flex flex-wrap items-center justify-between gap-6 sm:gap-8 lg:justify-center lg:gap-16" role="list">
       {items.map(({ label, value }) => (

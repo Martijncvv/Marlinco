@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+import Gallery from '../components/Gallery.astro';
+import CTA from '../components/CTA.astro';
+import Reviews from '../components/Reviews.astro';
+import { brand } from '../config/brand';
+
+const features = [
+  {
+    title: 'Hardhouten schuttingen',
+    description: 'Duurzaam, onderhoudsvriendelijk en met een warme uitstraling. Hardhouten schuttingen gaan tientallen jaren mee en worden alleen maar mooier.',
+  },
+  {
+    title: 'Betonnen schuttingen',
+    description: 'Robuust en onderhoudsvrij. Betonnen schuttingen zijn ideaal wanneer u op zoek bent naar een stevige, langdurige erfafscheiding.',
+  },
+  {
+    title: 'Composiet en modern',
+    description: 'Voor een strakke, moderne look bieden wij composiet schuttingen aan — weerbestendig, kleurvast en nagenoeg onderhoudsvrij.',
+  },
+  {
+    title: 'Advies op maat',
+    description: 'Niet zeker welk type schutting het beste past? Wij komen graag langs om de mogelijkheden te bespreken en een vrijblijvend advies te geven.',
+  },
+];
+---
+
+<BaseLayout title="Schuttingen" description={`${brand.name} plaatst schuttingen in diverse stijlen en materialen in de regio Papendrecht. Van hardhout tot composiet.`}>
+  <Header slot="header" />
+
+  <Banner title="Schuttingen" />
+
+  <section class="py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">Schuttingen voor elke tuin</h2>
+        <p class="mt-3 text-text-muted leading-relaxed">
+          Een goede schutting biedt niet alleen privacy, maar draagt ook bij aan de sfeer en uitstraling van uw tuin. Marlinco plaatst schuttingen in diverse stijlen en materialen — altijd vakkundig en afgestemd op uw wensen. Of u nu kiest voor de warmte van hardhout, de robuustheid van beton of het gemak van composiet, wij zorgen voor een strak en duurzaam resultaat.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        {features.map((feature) => (
+          <div class="flex gap-5 rounded-lg border border-border bg-background p-6 shadow-sm">
+            <div class="flex size-12 shrink-0 items-center justify-center rounded-lg bg-primary/10 text-primary">
+              <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="font-heading text-h3 font-semibold text-text">{feature.title}</h3>
+              <p class="mt-2 text-text-muted leading-relaxed">{feature.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Gallery
+    topper="Impressie"
+    heading="Schuttingen"
+    description="Een selectie van onze geplaatste schuttingen."
+    ctaLabel=""
+  />
+
+  <Reviews />
+
+  <CTA />
+
+  <Footer slot="footer" />
+</BaseLayout>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import Banner from '../components/Banner.astro';
+import CTA from '../components/CTA.astro';
+import Reviews from '../components/Reviews.astro';
+import { Image } from 'astro:assets';
+import { brand } from '../config/brand';
+---
+
+<BaseLayout title="Wie zijn wij" description={`Leer meer over ${brand.name} — ons verhaal, onze aanpak en onze passie voor vakmanschap.`}>
+  <Header slot="header" />
+
+  <Banner title="Wie zijn wij" />
+
+  <!-- Verhaal -->
+  <section class="py-section">
+    <div class="mx-auto grid max-w-site grid-cols-1 items-center gap-8 px-4 sm:px-6 lg:grid-cols-2 lg:gap-14">
+      <div class="overflow-hidden rounded-lg shadow-lg">
+        <Image
+          src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80"
+          alt="Marlinco aan het werk op een project"
+          width={800}
+          height={600}
+          loading="lazy"
+          class="size-full object-cover"
+        />
+      </div>
+      <div class="space-y-5">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Ons verhaal</span>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">Gebouwd op vakmanschap en vertrouwen</h2>
+        <p class="text-text-muted leading-relaxed">
+          Marlinco is opgericht op 26 oktober 2009 door M. van Veen in Papendrecht. Wat begon als een eenmansbedrijf met een passie voor bouwen en klussen, is uitgegroeid tot een betrouwbare naam in de regio.
+        </p>
+        <p class="text-text-muted leading-relaxed">
+          Al meer dan 15 jaar staan wij klaar voor particulieren die op zoek zijn naar kwaliteit en persoonlijke aandacht. Of het nu gaat om een overkapping, een nieuwe oprit of een sfeervolle schutting — wij leveren vakwerk waar u jarenlang plezier van heeft.
+        </p>
+        <p class="text-text-muted leading-relaxed">
+          Ons motto is niet voor niets: goede ideeën ontstaan door creatief denken. Wij luisteren naar uw wensen, denken mee over de mogelijkheden en zorgen voor een resultaat dat uw verwachtingen overtreft.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Waarom Marlinco -->
+  <section class="bg-surface py-section">
+    <div class="mx-auto max-w-site px-4 sm:px-6">
+      <div class="mx-auto mb-10 max-w-2xl text-center">
+        <span class="text-topper font-bold uppercase tracking-widest text-accent">Waarom Marlinco</span>
+        <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Waar wij voor staan</h2>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        <div class="rounded-lg border border-border bg-background p-6 shadow-sm">
+          <div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-h3 font-semibold text-text">Vakmanschap</h3>
+          <p class="mt-2 text-sm text-text-muted leading-relaxed">Met meer dan 15 jaar ervaring weten wij wat werkt. Elk project wordt met zorg en precisie uitgevoerd.</p>
+        </div>
+
+        <div class="rounded-lg border border-border bg-background p-6 shadow-sm">
+          <div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-h3 font-semibold text-text">Persoonlijk contact</h3>
+          <p class="mt-2 text-sm text-text-muted leading-relaxed">U heeft altijd direct contact met degene die het werk uitvoert. Geen tussenpersonen, maar korte lijnen.</p>
+        </div>
+
+        <div class="rounded-lg border border-border bg-background p-6 shadow-sm">
+          <div class="mb-4 flex size-12 items-center justify-center rounded-lg bg-primary/10 text-primary">
+            <svg class="size-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+            </svg>
+          </div>
+          <h3 class="font-heading text-h3 font-semibold text-text">Creatief meedenken</h3>
+          <p class="mt-2 text-sm text-text-muted leading-relaxed">Wij komen niet alleen handen tekort — wij denken actief mee over de beste oplossing voor uw situatie.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <Reviews />
+
+  <CTA />
+
+  <Footer slot="footer" />
+</BaseLayout>

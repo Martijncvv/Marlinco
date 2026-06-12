@@ -1,40 +1,25 @@
 /**
  * ─────────────────────────────────────────────────────────────────────────────
- * BRAND CONFIGURATION
- * ─────────────────────────────────────────────────────────────────────────────
- * Single file to edit when adapting the theme for a new client.
- *
- * Colors flow into  → src/styles/theme.css  (CSS custom properties)
- * Fonts flow into   → astro.config.mjs      (Astro 6 built-in font optimizer)
- * Meta flows into   → src/layouts/BaseLayout.astro
- *
- * Color format: use hex (#1a1a2e) or CSS color values.
+ * BRAND CONFIGURATION — Marlinco
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
 export const brand = {
-  // ── Site Identity ──────────────────────────────────────────────────────────
-  name: 'Small Business Starter',
-  tagline: 'Professional service you can trust.',
+  name: 'Marlinco',
+  tagline: 'Goede ideeën ontstaan door creatief denken!',
   description:
-    'A fast, mobile-first small-business website template built with Astro 6 and Tailwind v4. Fully customisable for any trade or service business.',
-  url: 'https://example.com',
-  locale: 'en_US',
+    'Marlinco is uw partner voor alle klussen in en om huis. Gespecialiseerd in overkappingen, schuren, bestrating en schuttingen in de regio Papendrecht.',
+  url: 'https://www.marlinco.nl',
+  locale: 'nl_NL',
 
-  // ── Fonts ──────────────────────────────────────────────────────────────────
-  // To swap fonts: change the `name` values here AND update astro.config.mjs
-  // to match (both must stay in sync so Astro can optimise the correct files).
   fonts: {
     body: 'Inter',
     display: 'Oswald',
   },
 
-  // ── Colour Palette ─────────────────────────────────────────────────────────
-  // These values are written to CSS custom properties in theme.css.
-  // Tailwind v4 @theme picks them up automatically.
   colors: {
-    primary:      '#1B3A6B',
-    primaryLight: '#2563EB',
+    primary:      '#182754',
+    primaryLight: '#2A3F7E',
     primaryFg:    '#ffffff',
 
     accent:       '#F97316',
@@ -51,7 +36,6 @@ export const brand = {
     darkSurface:  '#1E293B',
   },
 
-  // ── Border radius ──────────────────────────────────────────────────────────
   radius: {
     sm:   '0.375rem',
     md:   '0.625rem',

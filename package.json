@@ -1,21 +1,18 @@
 {
-  "name": "small-business-starter",
+  "name": "marlinco",
   "type": "module",
-  "version": "0.1.0",
-  "description": "A minimal, fast, and fully customisable small-business website template built with Astro 6, Tailwind v4, and Playwright.",
-  "author": "",
+  "version": "1.0.0",
+  "description": "Website voor Marlinco — uw partner voor overkappingen, schuren, bestrating en schuttingen in Papendrecht.",
+  "author": "M. van Veen",
   "license": "MIT",
   "keywords": [
     "astro",
-    "astro-theme",
-    "astro6",
     "tailwind",
-    "tailwindcss",
-    "small-business",
-    "starter",
-    "template",
-    "view-transitions",
-    "playwright"
+    "marlinco",
+    "papendrecht",
+    "overkappingen",
+    "bestrating",
+    "schuttingen"
   ],
   "engines": {
     "node": ">=22.12.0"
