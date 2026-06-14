@@ -5,41 +5,42 @@ import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
-import Reviews from '../components/Reviews.astro';
 import { brand } from '../config/brand';
+import { bestratingFeatures as features } from '../data/services';
 
-const features = [
-  {
-    title: 'Opritten en parkeerplaatsen',
-    description: 'Een strakke oprit die er niet alleen mooi uitziet, maar ook stevig genoeg is voor dagelijks gebruik. Wij zorgen voor de juiste fundering en afwatering.',
-  },
-  {
-    title: 'Terrassen en tuinpaden',
-    description: 'Van een sfeervol terras tot praktische tuinpaden — wij leggen bestrating die past bij uw tuin en uw smaak.',
-  },
-  {
-    title: 'Diverse materialen',
-    description: 'Klinkers, tegels, natuursteen of sierbestrating — wij adviseren u graag over het materiaal dat het beste past bij uw project en budget.',
-  },
-  {
-    title: 'Grondwerk en afwatering',
-    description: 'Goede bestrating begint bij een solide ondergrond. Wij verzorgen het complete grondwerk inclusief afwatering zodat alles vlak en stabiel blijft.',
-  },
-];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: features.map((f) => ({
+    '@type': 'Question',
+    name: f.title,
+    acceptedAnswer: { '@type': 'Answer', text: f.description },
+  })),
+};
 ---
 
-<BaseLayout title="Bestrating" description={`${brand.name} legt bestrating voor opritten, terrassen en tuinpaden in de regio Papendrecht. Vakkundig en duurzaam.`}>
+<BaseLayout
+  title="Bestrating"
+  description={`Bestrating, vlonders, stenen trappen, plantenbakken, kunstgras en natuurgras voor opritten, terrassen en tuinpaden in Papendrecht en de Drechtsteden. Vakkundig grondwerk door ${brand.name}. Vraag vrijblijvend uw offerte aan.`}
+  schema={faqSchema}
+>
   <Header slot="header" />
 
   <Banner title="Bestrating" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">Bestrating die er mag zijn</h2>
+      <div class="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
+        <h2 class="font-heading text-h2 font-bold uppercase text-balance text-text">Bestrating en vlonders die er mogen zijn</h2>
         <p class="mt-3 text-text-muted leading-relaxed">
-          Of het nu gaat om een nieuwe oprit, een sfeervol terras of een praktisch tuinpad — bij Marlinco bent u aan het juiste adres. Wij leggen bestrating die niet alleen mooi oogt, maar ook jarenlang stevig blijft liggen. Met vakkundige aanleg en de juiste materialen creëren wij een buitenruimte waar u trots op kunt zijn.
+          Of het nu gaat om een nieuwe oprit, een sfeervol terras, een houten vlonder, stenen trappen, gemetselde plantenbakken, het ophogen van uw tuin, een praktisch tuinpad of het aanleggen van kunstgras of natuurgras — bij Marlinco bent u aan het juiste adres. Wij leggen bestrating, vlonders, terrasplanken en grasvelden die niet alleen mooi ogen, maar ook jarenlang stevig blijven liggen. Met vakkundige aanleg en de juiste materialen creëren wij een buitenruimte waar u trots op kunt zijn.
         </p>
+        <a
+          href="/#contact"
+          class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90"
+        >
+          Bespreek uw project
+        </a>
       </div>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -63,11 +64,8 @@ const features = [
   <Gallery
     topper="Impressie"
     heading="Bestrating"
-    description="Een selectie van onze gerealiseerde bestratingprojecten."
     ctaLabel=""
   />
-
-  <Reviews />
 
   <CTA />
 

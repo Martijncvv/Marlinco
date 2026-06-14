@@ -28,12 +28,12 @@ const {
   services = [
     {
       title: 'Overkappingen & Schuren',
-      description: 'Een overkapping of schuur op maat? Wij ontwerpen en bouwen constructies die perfect passen bij uw woning en tuin. Duurzame materialen en een nette afwerking zijn onze standaard.',
+      description: 'Overkappingen, veranda\'s, buitenkeukens en schuren op maat — wij ontwerpen en bouwen constructies die perfect passen bij uw woning en tuin. Duurzame materialen en een nette afwerking zijn onze standaard.',
       href: '/overkappingen-schuren',
     },
     {
       title: 'Bestrating',
-      description: 'Van opritten en terrassen tot tuinpaden — wij leggen bestrating die er niet alleen mooi uitziet, maar ook jarenlang stevig blijft liggen. Altijd met de juiste afwatering en een strak resultaat.',
+      description: 'Van opritten en terrassen tot tuinpaden, houten vlonders, stenen trappen en plantenbakken — wij leggen bestrating die er niet alleen mooi uitziet, maar ook jarenlang stevig blijft liggen. Altijd met de juiste afwatering en een strak resultaat.',
       href: '/bestrating',
     },
     {
@@ -57,7 +57,7 @@ const {
       {services.map((service, i) => (
         <li>
           <a
-            href={service.href || '/contact'}
+            href={service.href || '/#contact'}
             aria-label={`Meer over ${service.title}`}
             class="group flex h-full cursor-pointer flex-col rounded-lg border border-border bg-background p-6 shadow-sm transition-shadow duration-200 hover:shadow-md"
           >

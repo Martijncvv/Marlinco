@@ -4,11 +4,10 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Hero from '../components/Hero.astro';
 import TrustBar from '../components/TrustBar.astro';
-import Services from '../components/Services.astro';
 import About from '../components/About.astro';
 import Reviews from '../components/Reviews.astro';
-import Gallery from '../components/Gallery.astro';
-import CTA from '../components/CTA.astro';
+import ProjectsByService from '../components/ProjectsByService.astro';
+import ContactForm from '../components/ContactForm.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 ---
@@ -31,17 +30,18 @@ import { client } from '../data/client';
       addressCountry: client.address.country,
     },
     url: client.domain,
+    areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
   }}
 >
   <Header slot="header" />
 
   <Hero />
   <TrustBar />
-  <Services />
-  <About />
+  <ProjectsByService />
+
   <Reviews />
-  <Gallery />
-  <CTA />
+  <About />
+  <ContactForm />
 
   <Footer slot="footer" />
 </BaseLayout>

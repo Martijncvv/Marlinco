@@ -1,25 +1,16 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import Banner from '../../components/Banner.astro';
-import { brand } from '../../config/brand';
-import { client } from '../../data/client';
+import { client } from '../data/client';
 ---
 
-<BaseLayout title="Contact" description={`Neem contact op met ${brand.name}. Vraag een vrijblijvende offerte aan of stel uw vraag.`}>
-  <Header slot="header" />
-
-  <Banner title="Contact" />
-
-  <section class="py-section">
-    <div class="mx-auto grid max-w-site grid-cols-1 gap-10 px-4 sm:px-6 lg:grid-cols-5 lg:gap-14">
+<section id="contact" class="bg-surface py-section scroll-mt-20">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="grid grid-cols-1 gap-10 lg:grid-cols-5 lg:gap-14">
 
       <!-- Form -->
       <div class="lg:col-span-3">
         <h2 class="font-heading text-h2 font-bold uppercase text-text">Stuur ons een bericht</h2>
         <p class="mt-2 mb-8 text-text-muted">
-          Vul het formulier in en wij nemen zo snel mogelijk contact met u op.
+          Vul het formulier in voor een vrijblijvende reactie, of bel of WhatsApp ons direct.
         </p>
 
         <form
@@ -97,27 +88,24 @@ import { client } from '../../data/client';
         </div>
 
         <div>
+          <h3 class="font-heading text-lg font-semibold text-text">WhatsApp</h3>
+          <a
+            href={`https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20jullie%20diensten.`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 block text-primary-light font-medium transition-colors hover:text-primary"
+          >
+            Stuur een bericht
+          </a>
+        </div>
+
+        <div>
           <h3 class="font-heading text-lg font-semibold text-text">E-mail</h3>
           <a href={`mailto:${client.email}`} class="mt-1 block text-primary-light font-medium transition-colors hover:text-primary">
             {client.email}
           </a>
         </div>
-
-        <div>
-          <h3 class="font-heading text-lg font-semibold text-text">Adres</h3>
-          <a
-            href={client.address.mapLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-1 block text-text-muted transition-colors hover:text-text"
-          >
-            {client.address.lineOne}<br />
-            {client.address.zip} {client.address.city}
-          </a>
-        </div>
       </aside>
     </div>
-  </section>
-
-  <Footer slot="footer" />
-</BaseLayout>
+  </div>
+</section>

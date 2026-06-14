@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+import { serviceProjects } from '../config/images';
+---
+
+<section class="py-section">
+  <div class="mx-auto max-w-site px-4 sm:px-6">
+    <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
+      <span class="text-topper font-bold uppercase tracking-widest text-accent">Ons werk</span>
+      <h2 class="mt-2 font-heading text-h2 font-bold uppercase text-text">Recente projecten</h2>
+      <p class="mt-3 text-text-muted leading-relaxed">
+        Van een klein tuinpad tot een grote overkapping — groot of klein, wij leveren altijd hetzelfde vakwerk.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 gap-8 md:grid-cols-3 md:gap-6 lg:gap-8">
+      {serviceProjects.map((group) => (
+        <div class="flex flex-col">
+          <h3 class="mb-4 font-heading text-h3 font-semibold text-text">
+            <a href={group.href} class="transition-colors hover:text-primary">
+              {group.service}
+            </a>
+          </h3>
+          <div class="flex flex-col gap-3">
+            {group.images.map(({ src, alt }) => (
+              <a
+                href={group.href}
+                class="group block overflow-hidden rounded-lg aspect-4/3 bg-surface"
+                aria-label={`Bekijk ${group.service}`}
+              >
+                <Image
+                  src={src}
+                  alt={alt}
+                  width={600}
+                  height={450}
+                  loading="lazy"
+                  decoding="async"
+                  class="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                />
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

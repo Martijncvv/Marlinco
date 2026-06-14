@@ -8,7 +8,7 @@ export const client = {
   name: 'Marlinco',
   email: 'mari@marlinco.nl',
   phoneForTel: '06-26742521',
-  phoneFormatted: '(06) 26 74 25 21',
+  phoneFormatted: '06 26 74 25 21',
   license: '',
   address: {
     lineOne: 'Matena 22',
@@ -17,7 +17,7 @@ export const client = {
     state: 'Zuid-Holland',
     zip: '3356 LG',
     country: 'NL',
-    mapLink: 'https://maps.google.com/?q=Matena+22+3356+LG+Papendrecht',
+    mapLink: 'https://maps.app.goo.gl/sGEyks11TCCRuBFr7',
   },
   socials: {
     facebook: '',
@@ -25,6 +25,26 @@ export const client = {
     google: 'https://maps.google.com/?q=Matena+22+3356+LG+Papendrecht',
   },
   domain: 'https://www.marlinco.nl',
+  serviceAreas: [
+    'Papendrecht',
+    'Dordrecht',
+    'Sliedrecht',
+    'Zwijndrecht',
+    'Hendrik-Ido-Ambacht',
+    'Ridderkerk',
+    'Alblasserdam',
+    'Oud-Alblas',
+    'Kinderdijk',
+    'Nieuw-Lekkerland',
+    'Streefkerk',
+    'Groot-Ammers',
+    'Bleskensgraaf',
+    'Molenaarsgraaf',
+    'Brandwijk',
+    'Ottoland',
+    'Giessenburg',
+    'Hardinxveld-Giessendam',
+  ],
 } as const;
 
 export type Client = typeof client;

@@ -5,41 +5,42 @@ import Footer from '../components/Footer.astro';
 import Banner from '../components/Banner.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
-import Reviews from '../components/Reviews.astro';
 import { brand } from '../config/brand';
+import { overkappingenFeatures as features } from '../data/services';
 
-const features = [
-  {
-    title: 'Op maat gemaakt',
-    description: 'Elke overkapping en schuur wordt ontworpen en gebouwd op basis van uw wensen, de beschikbare ruimte en de stijl van uw woning.',
-  },
-  {
-    title: 'Duurzame materialen',
-    description: 'Wij werken uitsluitend met kwalitatieve materialen die bestand zijn tegen het Nederlandse klimaat. Zo geniet u jarenlang van uw investering.',
-  },
-  {
-    title: 'Van ontwerp tot oplevering',
-    description: 'Wij begeleiden het volledige traject: van eerste idee en ontwerp tot de uiteindelijke plaatsing en nette afwerking.',
-  },
-  {
-    title: 'Vergunningen en regelgeving',
-    description: 'Waar nodig adviseren wij over vergunningen en zorgen wij ervoor dat alles voldoet aan de geldende bouwvoorschriften.',
-  },
-];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: features.map((f) => ({
+    '@type': 'Question',
+    name: f.title,
+    acceptedAnswer: { '@type': 'Answer', text: f.description },
+  })),
+};
 ---
 
-<BaseLayout title="Overkappingen & Schuren" description={`${brand.name} plaatst overkappingen en schuren op maat in de regio Papendrecht. Vakkundig, duurzaam en geheel naar uw wens.`}>
+<BaseLayout
+  title="Overkappingen & Schuren"
+  description={`Overkappingen, veranda's, buitenkeukens, tuinhuizen en schuren op maat in Papendrecht en de Drechtsteden. Duurzaam vakwerk door ${brand.name} sinds 2009. Vraag een vrijblijvende offerte aan.`}
+  schema={faqSchema}
+>
   <Header slot="header" />
 
   <Banner title="Overkappingen & Schuren" />
 
   <section class="py-section">
     <div class="mx-auto max-w-site px-4 sm:px-6">
-      <div class="mx-auto mb-10 max-w-2xl text-center lg:mb-14">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">Een overkapping of schuur op maat</h2>
+      <div class="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
+        <h2 class="font-heading text-h2 font-bold uppercase text-balance text-text">Een overkapping, veranda of schuur op maat</h2>
         <p class="mt-3 text-text-muted leading-relaxed">
-          Wilt u het hele jaar door genieten van uw tuin? Of heeft u behoefte aan extra opslagruimte? Marlinco ontwerpt en bouwt overkappingen en schuren die naadloos aansluiten bij uw woning. Met oog voor detail en gebruik van duurzame materialen realiseren wij constructies waar u jarenlang plezier van heeft.
+          Wilt u het hele jaar door genieten van uw tuin? Of heeft u behoefte aan extra opslagruimte? Marlinco ontwerpt en bouwt overkappingen, veranda's, buitenkeukens, tuinhuizen en schuren die naadloos aansluiten bij uw woning. Met oog voor detail en gebruik van duurzame materialen realiseren wij constructies waar u jarenlang plezier van heeft.
         </p>
+        <a
+          href="/#contact"
+          class="mt-6 inline-flex min-h-[44px] items-center justify-center rounded-md bg-accent px-6 py-3 text-base font-bold text-accent-fg shadow-sm transition-opacity hover:opacity-90"
+        >
+          Bespreek uw project
+        </a>
       </div>
 
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
@@ -63,11 +64,8 @@ const features = [
   <Gallery
     topper="Impressie"
     heading="Overkappingen & Schuren"
-    description="Een selectie van onze gerealiseerde overkappingen en schuren."
     ctaLabel=""
   />
-
-  <Reviews />
 
   <CTA />
 
