@@ -95,7 +95,7 @@ const currentPath = Astro.url.pathname;
 </header>
 
 <script>
-  (() => {
+  function initHeader() {
     const headerEl = document.querySelector('header');
     const btnEl = document.getElementById('menu-toggle');
     const menuEl = document.getElementById('mobile-menu');
@@ -167,15 +167,11 @@ const currentPath = Astro.url.pathname;
       if (target.closest('a[href]')) setMenuOpen(false);
     });
 
-    document.addEventListener('astro:before-preparation', () => setMenuOpen(false));
-    document.addEventListener('astro:after-swap', () => {
-      setMenuOpen(false);
-      syncActiveLinks();
-    });
-
     window.addEventListener('resize', () => setMenuOpen(false));
 
     setMenuOpen(false);
     syncActiveLinks();
-  })();
+  }
+
+  document.addEventListener('astro:page-load', initHeader);
 </script>
