@@ -7,6 +7,7 @@ import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { schuttingenFeatures as features } from '../data/services';
+import { schuttingenImages } from '../config/images';
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -64,6 +65,7 @@ const faqSchema = {
   <Gallery
     topper="Impressie"
     heading="Schuttingen"
+    images={schuttingenImages}
     ctaLabel=""
   />
 

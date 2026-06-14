@@ -37,14 +37,9 @@ export const overkappingenFeatures: ServiceFeature[] = [
 
 export const bestratingFeatures: ServiceFeature[] = [
   {
-    title: 'Opritten en parkeerplaatsen',
+    title: 'Opritten, terrassen en tuinpaden',
     description:
-      'Een strakke oprit die er niet alleen mooi uitziet, maar ook stevig genoeg is voor dagelijks gebruik. Wij zorgen voor de juiste fundering en afwatering.',
-  },
-  {
-    title: 'Terrassen en tuinpaden',
-    description:
-      'Van een sfeervol terras tot praktische tuinpaden — wij leggen bestrating die past bij uw tuin en uw smaak.',
+      'Van een strakke oprit die dagelijks gebruik aankan tot een sfeervol terras of praktisch tuinpad — wij leggen bestrating die past bij uw tuin en uw smaak.',
   },
   {
     title: 'Diverse materialen',
@@ -56,6 +51,11 @@ export const bestratingFeatures: ServiceFeature[] = [
     description:
       'Goede bestrating begint bij een solide ondergrond. Wij verzorgen het complete grondwerk inclusief afwatering zodat alles vlak en stabiel blijft.',
   },
+  {
+    title: 'Gras en kunstgras',
+    description:
+      'Van een verzorgd grasveld tot onderhoudsvrij kunstgras — wij leggen het strak aan op een goed voorbereide ondergrond, perfect aansluitend op uw bestrating.',
+  },
 ];
 
 export const schuttingenFeatures: ServiceFeature[] = [
@@ -65,9 +65,9 @@ export const schuttingenFeatures: ServiceFeature[] = [
       'Duurzaam, onderhoudsvriendelijk en met een warme uitstraling. Hardhouten schuttingen gaan tientallen jaren mee en worden alleen maar mooier.',
   },
   {
-    title: 'Betonnen schuttingen',
+    title: 'Verschillende palen en onderplaten',
     description:
-      'Robuust en onderhoudsvrij. Betonnen schuttingen zijn ideaal wanneer u op zoek bent naar een stevige, langdurige erfafscheiding.',
+      'Wij plaatsen schuttingen op diverse soorten palen — bijvoorbeeld betonnen palen met een betonnen onderplaat voor extra stevigheid en een langere levensduur van het hout.',
   },
   {
     title: 'Composiet en modern',

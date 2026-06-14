@@ -7,6 +7,7 @@ import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { bestratingFeatures as features } from '../data/services';
+import { bestratingImages } from '../config/images';
 
 const faqSchema = {
   '@context': 'https://schema.org',
@@ -64,6 +65,7 @@ const faqSchema = {
   <Gallery
     topper="Impressie"
     heading="Bestrating"
+    images={bestratingImages}
     ctaLabel=""
   />
 

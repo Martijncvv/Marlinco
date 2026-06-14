@@ -8,8 +8,8 @@ import type { ImageMetadata } from 'astro';
 import { client } from '../data/client';
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-// import heroImage from '../assets/images/hero/hero.jpg';
-export const heroImage: ImageMetadata | undefined = undefined;
+import heroImageSrc from '../assets/images/services/schuttingen/papendrecht-29-bestrating-schutting.jpg';
+export const heroImage: ImageMetadata = heroImageSrc;
 
 // ── About ─────────────────────────────────────────────────────────────────────
 // import aboutImage from '../assets/images/about/team.jpg';
@@ -80,26 +80,57 @@ export interface ServiceProjectGroup {
   images: GalleryImage[];
 }
 
-const overkappingenDiscovered = Object.entries(
-  import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/projects/overkappingen/*.{jpg,jpeg,png,webp,avif}',
-    { eager: true },
-  ),
-).map(([path, mod]): GalleryImage => ({ src: mod.default, alt: toAlt(path) }));
+// Metadata.json per service-map: { "<bestand>.jpeg": "Nederlandse alt-tekst" }
+import overkappingenMeta from '../assets/images/services/overkappingen-schuren/metadata.json';
+import bestratingMeta from '../assets/images/services/bestrating/metadata.json';
+import schuttingenMeta from '../assets/images/services/schuttingen/metadata.json';
 
-const bestratingDiscovered = Object.entries(
-  import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/projects/bestrating/*.{jpg,jpeg,png,webp,avif}',
-    { eager: true },
-  ),
-).map(([path, mod]): GalleryImage => ({ src: mod.default, alt: toAlt(path) }));
+type AltMap = Record<string, string>;
 
-const schuttingenDiscovered = Object.entries(
+function discoverService(
+  entries: Record<string, { default: ImageMetadata }>,
+  altMap: AltMap,
+): GalleryImage[] {
+  return Object.entries(entries).map(([path, mod]): GalleryImage => {
+    const filename = path.split('/').pop()!;
+    return {
+      src: mod.default,
+      alt: altMap[filename] ?? toAlt(path),
+      location: toLocation(path),
+    };
+  });
+}
+
+const overkappingenDiscovered = discoverService(
   import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/projects/schuttingen/*.{jpg,jpeg,png,webp,avif}',
+    '../assets/images/services/overkappingen-schuren/*.{jpg,jpeg,png,webp,avif}',
     { eager: true },
   ),
-).map(([path, mod]): GalleryImage => ({ src: mod.default, alt: toAlt(path) }));
+  overkappingenMeta as AltMap,
+);
+
+const bestratingDiscovered = discoverService(
+  import.meta.glob<{ default: ImageMetadata }>(
+    '../assets/images/services/bestrating/*.{jpg,jpeg,png,webp,avif}',
+    { eager: true },
+  ),
+  bestratingMeta as AltMap,
+);
+
+const schuttingenDiscovered = discoverService(
+  import.meta.glob<{ default: ImageMetadata }>(
+    '../assets/images/services/schuttingen/*.{jpg,jpeg,png,webp,avif}',
+    { eager: true },
+  ),
+  schuttingenMeta as AltMap,
+);
+
+export const overkappingenImages: GalleryImage[] =
+  overkappingenDiscovered.length > 0 ? overkappingenDiscovered : [];
+export const bestratingImages: GalleryImage[] =
+  bestratingDiscovered.length > 0 ? bestratingDiscovered : [];
+export const schuttingenImages: GalleryImage[] =
+  schuttingenDiscovered.length > 0 ? schuttingenDiscovered : [];
 
 const overkappingenPlaceholders: GalleryImage[] = [
   { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80', alt: 'Grote houten overkapping over terras' },
