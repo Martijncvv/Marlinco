@@ -12,14 +12,15 @@ import heroImageSrc from '../assets/images/services/schuttingen/papendrecht-29-b
 export const heroImage: ImageMetadata = heroImageSrc;
 
 // ── About ─────────────────────────────────────────────────────────────────────
-// import aboutImage from '../assets/images/about/team.jpg';
-export const aboutImage: ImageMetadata | undefined = undefined;
+import aboutImageSrc from '../assets/images/about/mari-tuin-werk.png';
+export const aboutImage: ImageMetadata = aboutImageSrc;
 
 // ── Gallery ───────────────────────────────────────────────────────────────────
 export interface GalleryImage {
   src: ImageMetadata | string;
   alt: string;
   location?: string;
+  filename?: string;
 }
 
 function toAlt(path: string): string {
@@ -97,8 +98,15 @@ function discoverService(
       src: mod.default,
       alt: altMap[filename] ?? toAlt(path),
       location: toLocation(path),
+      filename,
     };
   });
+}
+
+function pickByFilename(images: GalleryImage[], filenames: string[]): GalleryImage[] {
+  return filenames
+    .map((name) => images.find((img) => img.filename === name))
+    .filter((img): img is GalleryImage => img !== undefined);
 }
 
 const overkappingenDiscovered = discoverService(
@@ -154,16 +162,31 @@ export const serviceProjects: ServiceProjectGroup[] = [
   {
     service: 'Overkappingen & Schuren',
     href: '/overkappingen-schuren',
-    images: (overkappingenDiscovered.length > 0 ? overkappingenDiscovered : overkappingenPlaceholders).slice(0, 2),
+    images: overkappingenDiscovered.length > 0
+      ? pickByFilename(overkappingenDiscovered, [
+          'papendrecht-16-overkapping.jpeg',
+          'sliedrecht-5-overkapping.jpeg',
+        ])
+      : overkappingenPlaceholders.slice(0, 2),
   },
   {
     service: 'Bestrating',
     href: '/bestrating',
-    images: (bestratingDiscovered.length > 0 ? bestratingDiscovered : bestratingPlaceholders).slice(0, 2),
+    images: bestratingDiscovered.length > 0
+      ? pickByFilename(bestratingDiscovered, [
+          'bestrating-28.jpeg',
+          'bestrating-5.jpeg',
+        ])
+      : bestratingPlaceholders.slice(0, 2),
   },
   {
     service: 'Schuttingen',
     href: '/schuttingen',
-    images: (schuttingenDiscovered.length > 0 ? schuttingenDiscovered : schuttingenPlaceholders).slice(0, 2),
+    images: schuttingenDiscovered.length > 0
+      ? pickByFilename(schuttingenDiscovered, [
+          'papendrecht-29-bestrating-schutting.jpg',
+          'divers-12-schuttingen.jpeg',
+        ])
+      : schuttingenPlaceholders.slice(0, 2),
   },
 ];
