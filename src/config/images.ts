@@ -83,7 +83,7 @@ export interface ServiceProjectGroup {
 
 // Metadata.json per service-map: { "<bestand>.jpeg": "Nederlandse alt-tekst" }
 import overkappingenMeta from '../assets/images/services/overkappingen-schuren/metadata.json';
-import bestratingMeta from '../assets/images/services/bestrating/metadata.json';
+import tuinaanlegMeta from '../assets/images/services/tuinaanleg/metadata.json';
 import schuttingenMeta from '../assets/images/services/schuttingen/metadata.json';
 
 type AltMap = Record<string, string>;
@@ -117,12 +117,12 @@ const overkappingenDiscovered = discoverService(
   overkappingenMeta as AltMap,
 );
 
-const bestratingDiscovered = discoverService(
+const tuinaanlegDiscovered = discoverService(
   import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/services/bestrating/*.{jpg,jpeg,png,webp,avif}',
+    '../assets/images/services/tuinaanleg/*.{jpg,jpeg,png,webp,avif}',
     { eager: true },
   ),
-  bestratingMeta as AltMap,
+  tuinaanlegMeta as AltMap,
 );
 
 const schuttingenDiscovered = discoverService(
@@ -135,8 +135,8 @@ const schuttingenDiscovered = discoverService(
 
 export const overkappingenImages: GalleryImage[] =
   overkappingenDiscovered.length > 0 ? overkappingenDiscovered : [];
-export const bestratingImages: GalleryImage[] =
-  bestratingDiscovered.length > 0 ? bestratingDiscovered : [];
+export const tuinaanlegImages: GalleryImage[] =
+  tuinaanlegDiscovered.length > 0 ? tuinaanlegDiscovered : [];
 export const schuttingenImages: GalleryImage[] =
   schuttingenDiscovered.length > 0 ? schuttingenDiscovered : [];
 
@@ -146,7 +146,7 @@ const overkappingenPlaceholders: GalleryImage[] = [
   { src: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80', alt: 'Compacte overkapping bij voordeur' },
 ];
 
-const bestratingPlaceholders: GalleryImage[] = [
+const tuinaanlegPlaceholders: GalleryImage[] = [
   { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80', alt: 'Strak bestrate oprit met klinkers' },
   { src: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80', alt: 'Terras met sierbestrating' },
   { src: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=80', alt: 'Klein tuinpad met verlichting' },
@@ -170,14 +170,14 @@ export const serviceProjects: ServiceProjectGroup[] = [
       : overkappingenPlaceholders.slice(0, 2),
   },
   {
-    service: 'Bestrating',
-    href: '/bestrating',
-    images: bestratingDiscovered.length > 0
-      ? pickByFilename(bestratingDiscovered, [
+    service: 'Tuinaanleg & bestrating',
+    href: '/tuinaanleg',
+    images: tuinaanlegDiscovered.length > 0
+      ? pickByFilename(tuinaanlegDiscovered, [
           'bestrating-28.jpeg',
           'bestrating-5.jpeg',
         ])
-      : bestratingPlaceholders.slice(0, 2),
+      : tuinaanlegPlaceholders.slice(0, 2),
   },
   {
     service: 'Schuttingen',

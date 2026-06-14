@@ -35,7 +35,7 @@ export const overkappingenFeatures: ServiceFeature[] = [
   },
 ];
 
-export const bestratingFeatures: ServiceFeature[] = [
+export const tuinaanlegFeatures: ServiceFeature[] = [
   {
     title: 'Opritten, terrassen en tuinpaden',
     description:

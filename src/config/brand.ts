@@ -8,7 +8,7 @@ export const brand = {
   name: 'Marlinco',
   tagline: 'Uw idee, ons vakmanschap.',
   description:
-    'Marlinco is uw partner voor alle klussen in en om huis. Gespecialiseerd in overkappingen, schuren, bestrating en schuttingen in de regio Papendrecht.',
+    'Marlinco is uw partner voor alle klussen in en om huis. Gespecialiseerd in overkappingen, schuren, tuinaanleg, bestrating en schuttingen in de regio Papendrecht.',
   url: 'https://www.marlinco.nl',
   locale: 'nl_NL',
 
