@@ -6,24 +6,48 @@ import Banner from '../components/Banner.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
+import { client } from '../data/client';
 import { schuttingenFeatures as features } from '../data/services';
 import { schuttingenImages } from '../config/images';
 
-const faqSchema = {
+const pageUrl = new URL('/schuttingen', client.domain).toString();
+
+const schema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: features.map((f) => ({
-    '@type': 'Question',
-    name: f.title,
-    acceptedAnswer: { '@type': 'Answer', text: f.description },
-  })),
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: 'Schuttingen',
+      serviceType: 'Schuttingen plaatsen in hardhout, beton of composiet',
+      description: `${brand.name} plaatst schuttingen in hardhout, beton en composiet in Papendrecht en de Drechtsteden — vakkundig gemonteerd en afgestemd op uw tuin.`,
+      provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
+      areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
+      url: pageUrl,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: client.domain },
+        { '@type': 'ListItem', position: 2, name: 'Schuttingen', item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: features.map((f) => ({
+        '@type': 'Question',
+        name: f.title,
+        acceptedAnswer: { '@type': 'Answer', text: f.description },
+      })),
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="Schuttingen"
   description={`Schuttingen plaatsen in Papendrecht en de Drechtsteden — hardhout, beton of composiet. Vakkundig gemonteerd door ${brand.name}. Vraag een vrijblijvende offerte aan.`}
-  schema={faqSchema}
+  schema={schema}
 >
   <Header slot="header" />
 

@@ -6,24 +6,48 @@ import Banner from '../components/Banner.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
+import { client } from '../data/client';
 import { overkappingenFeatures as features } from '../data/services';
 import { overkappingenImages } from '../config/images';
 
-const faqSchema = {
+const pageUrl = new URL('/overkappingen-schuren', client.domain).toString();
+
+const schema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: features.map((f) => ({
-    '@type': 'Question',
-    name: f.title,
-    acceptedAnswer: { '@type': 'Answer', text: f.description },
-  })),
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: 'Overkappingen & Schuren',
+      serviceType: 'Overkappingen, veranda\'s, buitenkeukens, tuinhuizen en schuren op maat',
+      description: `${brand.name} ontwerpt en bouwt overkappingen, veranda's, buitenkeukens, tuinhuizen en schuren op maat in Papendrecht en de Drechtsteden.`,
+      provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
+      areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
+      url: pageUrl,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: client.domain },
+        { '@type': 'ListItem', position: 2, name: 'Overkappingen & Schuren', item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: features.map((f) => ({
+        '@type': 'Question',
+        name: f.title,
+        acceptedAnswer: { '@type': 'Answer', text: f.description },
+      })),
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="Overkappingen & Schuren"
   description={`Overkappingen, veranda's, buitenkeukens, tuinhuizen en schuren op maat in Papendrecht en de Drechtsteden. Duurzaam vakwerk door ${brand.name} sinds 2009. Vraag een vrijblijvende offerte aan.`}
-  schema={faqSchema}
+  schema={schema}
 >
   <Header slot="header" />
 

@@ -6,24 +6,48 @@ import Banner from '../components/Banner.astro';
 import Gallery from '../components/Gallery.astro';
 import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
+import { client } from '../data/client';
 import { tuinaanlegFeatures as features } from '../data/services';
 import { tuinaanlegImages } from '../config/images';
 
-const faqSchema = {
+const pageUrl = new URL('/tuinaanleg', client.domain).toString();
+
+const schema = {
   '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: features.map((f) => ({
-    '@type': 'Question',
-    name: f.title,
-    acceptedAnswer: { '@type': 'Answer', text: f.description },
-  })),
+  '@graph': [
+    {
+      '@type': 'Service',
+      '@id': `${pageUrl}#service`,
+      name: 'Tuinaanleg & bestrating',
+      serviceType: 'Tuinaanleg, bestrating, vlonders, trappen, plantenbakken en kunstgras',
+      description: `${brand.name} legt opritten, terrassen, tuinpaden, vlonders, stenen trappen, plantenbakken en kunstgras of natuurgras aan in Papendrecht en de Drechtsteden.`,
+      provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
+      areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
+      url: pageUrl,
+    },
+    {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        { '@type': 'ListItem', position: 1, name: 'Home', item: client.domain },
+        { '@type': 'ListItem', position: 2, name: 'Tuinaanleg & bestrating', item: pageUrl },
+      ],
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: features.map((f) => ({
+        '@type': 'Question',
+        name: f.title,
+        acceptedAnswer: { '@type': 'Answer', text: f.description },
+      })),
+    },
+  ],
 };
 ---
 
 <BaseLayout
   title="Tuinaanleg & bestrating"
   description={`Tuinaanleg en bestrating: vlonders, stenen trappen, plantenbakken, kunstgras en natuurgras voor opritten, terrassen en tuinpaden in Papendrecht en de Drechtsteden. Vakkundig grondwerk door ${brand.name}. Vraag vrijblijvend uw offerte aan.`}
-  schema={faqSchema}
+  schema={schema}
 >
   <Header slot="header" />
 
