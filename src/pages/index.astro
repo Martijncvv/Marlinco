@@ -10,10 +10,6 @@ import ProjectsByService from '../components/ProjectsByService.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
-import { reviews } from '../data/reviews';
-
-const ratingSum = reviews.reduce((acc, r) => acc + (r.rating ?? 5), 0);
-const ratingAvg = (ratingSum / reviews.length).toFixed(1);
 
 const schema = {
   '@context': 'https://schema.org',
@@ -34,24 +30,7 @@ const schema = {
       },
       url: client.domain,
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: ratingAvg,
-        reviewCount: reviews.length,
-        bestRating: 5,
-        worstRating: 1,
-      },
-      review: reviews.map((r) => ({
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: r.rating ?? 5,
-          bestRating: 5,
-          worstRating: 1,
-        },
-        author: { '@type': 'Person', name: r.name },
-        reviewBody: r.quote,
-      })),
+      sameAs: [client.socials.google],
     },
     {
       '@type': 'Organization',
@@ -59,6 +38,7 @@ const schema = {
       name: client.name,
       url: client.domain,
       logo: new URL('/og-image.jpg', client.domain).toString(),
+      sameAs: [client.socials.google],
     },
   ],
 };

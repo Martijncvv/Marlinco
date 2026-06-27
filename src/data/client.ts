@@ -22,7 +22,7 @@ export const client = {
   socials: {
     facebook: '',
     instagram: '',
-    google: 'https://maps.google.com/?q=Matena+22+3356+LG+Papendrecht',
+    google: 'https://maps.app.goo.gl/dBn7C6MQP7JcP8d36',
   },
   domain: 'https://www.marlinco.nl',
   serviceAreas: [
