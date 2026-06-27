@@ -19,8 +19,8 @@ const schema = {
       '@type': 'Service',
       '@id': `${pageUrl}#service`,
       name: 'Schuttingen',
-      serviceType: 'Schuttingen plaatsen in hardhout, beton of composiet',
-      description: `${brand.name} plaatst schuttingen in hardhout, beton en composiet in Papendrecht en de Drechtsteden — vakkundig gemonteerd en afgestemd op uw tuin.`,
+      serviceType: 'Houten schuttingen plaatsen in diverse houtsoorten',
+      description: `${brand.name} plaatst houten schuttingen in diverse houtsoorten — desgewenst op stevige betonnen palen — in Papendrecht en de Drechtsteden, vakkundig gemonteerd en afgestemd op uw tuin.`,
       provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
       url: pageUrl,
@@ -46,7 +46,7 @@ const schema = {
 
 <BaseLayout
   title="Schuttingen"
-  description={`Schuttingen plaatsen in Papendrecht en de Drechtsteden — hardhout, beton of composiet. Vakkundig gemonteerd door ${brand.name}. Vraag een vrijblijvende offerte aan.`}
+  description={`Houten schuttingen plaatsen in Papendrecht en de Drechtsteden — diverse houtsoorten, desgewenst op betonnen palen. Vakkundig gemonteerd door ${brand.name}. Vraag een vrijblijvende offerte aan.`}
   schema={schema}
 >
   <Header slot="header" />
@@ -58,7 +58,7 @@ const schema = {
       <div class="mx-auto mb-10 max-w-3xl text-center lg:mb-14">
         <h2 class="font-heading text-h2 font-bold uppercase text-balance text-text">Schuttingen voor elke tuin</h2>
         <p class="mt-3 text-text-muted leading-relaxed">
-          Een goede schutting biedt niet alleen privacy, maar draagt ook bij aan de sfeer en uitstraling van uw tuin. Marlinco plaatst schuttingen in diverse stijlen en materialen — altijd vakkundig en afgestemd op uw wensen. Of u nu kiest voor de warmte van hardhout, de robuustheid van beton of het gemak van composiet, wij zorgen voor een strak en duurzaam resultaat.
+          Een goede schutting biedt niet alleen privacy, maar draagt ook bij aan de sfeer en uitstraling van uw tuin. Marlinco plaatst schuttingen in diverse stijlen en materialen — altijd vakkundig en afgestemd op uw wensen. Of u nu kiest voor de warmte van hardhout of een andere houtsoort — desgewenst op stevige betonnen palen — wij zorgen voor een strak en duurzaam resultaat.
         </p>
         <a
           href="/#contact"

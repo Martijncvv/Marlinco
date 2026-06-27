@@ -60,9 +60,9 @@ export const tuinaanlegFeatures: ServiceFeature[] = [
 
 export const schuttingenFeatures: ServiceFeature[] = [
   {
-    title: 'Hardhouten schuttingen',
+    title: 'Houten schuttingen',
     description:
-      'Duurzaam, onderhoudsvriendelijk en met een warme uitstraling. Hardhouten schuttingen gaan tientallen jaren mee en worden alleen maar mooier.',
+      'Wij werken met verschillende houtsoorten — van duurzaam hardhout tot grenen en vuren. Met een warme uitstraling, vakkundig geplaatst en afgestemd op uw wensen.',
   },
   {
     title: 'Verschillende palen en onderplaten',
@@ -70,9 +70,9 @@ export const schuttingenFeatures: ServiceFeature[] = [
       'Wij plaatsen schuttingen op diverse soorten palen — bijvoorbeeld betonnen palen met een betonnen onderplaat voor extra stevigheid en een langere levensduur van het hout.',
   },
   {
-    title: 'Composiet en modern',
+    title: 'Compleet ontzorgd, van A tot Z',
     description:
-      'Voor een strakke, moderne look bieden wij composiet schuttingen aan — weerbestendig, kleurvast en nagenoeg onderhoudsvrij.',
+      'Wij regelen het hele traject: van inmeten en advies tot levering, vakkundige plaatsing en het afvoeren van uw oude schutting. U heeft er geen omkijken naar.',
   },
   {
     title: 'Advies op maat',
