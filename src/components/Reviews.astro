@@ -5,6 +5,7 @@ interface Review {
   quote: string;
   name: string;
   location: string;
+  url?: string;
   rating?: number;
 }
 
@@ -29,7 +30,7 @@ const {
     </div>
 
     <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
-      {reviews.map(({ quote, name, location, rating = 5 }) => (
+      {reviews.map(({ quote, name, location, url, rating = 5 }) => (
         <li class="flex flex-col rounded-lg border border-border bg-background p-6 shadow-sm">
           <div class="mb-4 flex gap-0.5" aria-label={`${rating} van 5 sterren`}>
             {Array.from({ length: 5 }).map((_, i) => (
@@ -50,7 +51,18 @@ const {
 
           <div class="mt-4 border-t border-border pt-4">
             <p class="font-semibold text-text">{name}</p>
-            <p class="text-sm text-text-muted">{location}</p>
+            {url ? (
+              <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-sm text-accent underline hover:no-underline"
+              >
+                {location}
+              </a>
+            ) : (
+              <p class="text-sm text-text-muted">{location}</p>
+            )}
           </div>
         </li>
       ))}
