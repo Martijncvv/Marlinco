@@ -9,13 +9,14 @@ export const reviews = [
     url: client.socials.google,
     rating: 5,
   },
-  {
-    quote:
-      'Onze oprit is volledig opnieuw bestraat. Netjes werk, op tijd klaar en een eerlijke prijs. Zeker een aanrader.',
-    name: 'Peter V.',
-    location: 'Dordrecht',
-    rating: 5,
-  },
+    {
+        quote:
+            'Aan Marlinco kan je je klus met een gerust hart toevertrouwen. De overkapping die de bedoeling was is gedurende de klus omgetoverd tot een mooie schuur. Alles is uitgevoerd met de precisie van een vakman, die weet hoe je met gereedschap en hout moet omgaan. Al mijn klussen gaan in het vervolg naar Mari. Chapeau!!',
+        name: 'Peter R.',
+        location: 'Google review',
+        url: client.socials.google,
+        rating: 5,
+    },
   {
     quote:
       'Prima resultaat geleverd voor upgrade van onze veranda, komt afspraken altijd na en is een echte vakman!!',
@@ -24,6 +25,7 @@ export const reviews = [
     url: client.socials.google,
     rating: 5,
   },
+
 ] as const;
 
 export type Review = (typeof reviews)[number];
