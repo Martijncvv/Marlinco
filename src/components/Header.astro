@@ -1,13 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import { brand } from '../config/brand';
+import { services, serviceHref } from '../data/services';
 import logo from '../assets/images/branding/marlinco-logo.svg';
 
 const nav = [
-  { label: 'Home',                    href: '/' },
-  { label: 'Overkappingen & Schuren', href: '/overkappingen-schuren' },
-  { label: 'Tuinaanleg',             href: '/tuinaanleg' },
-  { label: 'Schuttingen',            href: '/schuttingen' },
+  { label: 'Home', href: '/' },
+  ...services.map((s) => ({ label: s.navLabel, href: serviceHref(s.slug) })),
 ];
 
 const currentPath = Astro.url.pathname;

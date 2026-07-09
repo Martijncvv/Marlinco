@@ -1,4 +1,6 @@
 ---
+import { home } from '../data/content';
+
 interface Props {
   title?: string;
   description?: string;
@@ -7,10 +9,10 @@ interface Props {
 }
 
 const {
-  title = 'Een idee voor uw tuin?',
-  description = 'Neem vrijblijvend contact met ons op — we kijken graag met u mee. Geen project is te groot of te klein.',
-  buttonText = 'Bespreek uw project',
-  buttonHref = '/#contact',
+  title = home.cta.title,
+  description = home.cta.description,
+  buttonText = home.cta.buttonText,
+  buttonHref = home.cta.buttonHref,
 } = Astro.props;
 ---
 

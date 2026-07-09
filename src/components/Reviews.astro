@@ -1,5 +1,6 @@
 ---
 import { reviews as defaultReviews } from '../data/reviews';
+import { home } from '../data/content';
 
 interface Review {
   quote: string;
@@ -16,8 +17,8 @@ interface Props {
 }
 
 const {
-  topper = 'Ervaringen',
-  heading = 'Wat onze klanten zeggen',
+  topper = home.reviewsSection.topper,
+  heading = home.reviewsSection.heading,
   reviews = defaultReviews,
 } = Astro.props;
 ---

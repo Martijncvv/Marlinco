@@ -2,9 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import { site } from '../../data/content';
 ---
 
-<BaseLayout title="Bericht verzonden" description="Uw bericht is ontvangen.">
+<BaseLayout title={site.success.seoTitle} description={site.success.seoDescription}>
   <Header slot="header" />
 
   <section class="flex min-h-[60vh] items-center justify-center px-4">
@@ -16,16 +17,16 @@ import Footer from '../../components/Footer.astro';
       </div>
 
       <h1 class="font-heading text-h1 font-bold uppercase text-text">
-        Bericht ontvangen
+        {site.success.heading}
       </h1>
       <p class="mt-4 text-text-muted leading-relaxed">
-        Bedankt voor uw bericht. Wij nemen zo snel mogelijk contact met u op.
+        {site.success.body}
       </p>
       <a
         href="/"
         class="mt-8 inline-flex min-h-[44px] items-center justify-center rounded-md bg-primary px-8 py-3 text-base font-bold text-primary-fg shadow-sm transition-opacity hover:opacity-90"
       >
-        Terug naar home
+        {site.success.backLabel}
       </a>
     </div>
   </section>

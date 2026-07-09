@@ -11,6 +11,9 @@ import { ClientRouter } from 'astro:transitions';
 import '../styles/global.css';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { site } from '../data/content';
+
+const whatsappHref = `https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=${encodeURIComponent(site.contact.whatsappMessage)}`;
 
 interface Props {
   title?: string;
@@ -69,7 +72,7 @@ const ogImageURL = new URL(image, Astro.site ?? brand.url).toString();
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="theme-color" content="#182754" />
+    <meta name="theme-color" content={brand.colors.primary} />
 
     <!-- Fonts -->
     <Font cssVariable="--font-display" preload />
@@ -112,7 +115,7 @@ const ogImageURL = new URL(image, Astro.site ?? brand.url).toString();
 
     <!-- WhatsApp FAB -->
     <a
-      href={`https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20jullie%20diensten.`}
+      href={whatsappHref}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Stuur ons een WhatsApp-bericht"

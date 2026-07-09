@@ -1,9 +1,13 @@
 /*
  * ─────────────────────────────────────────────────────────────────────────────
- * THEME — edit src/config/brand.ts to change values, not this file.
+ * THEME — edit src/config/brand.ts to change colors/radius, then run
+ *   `pnpm run generate:theme`  (also runs automatically before dev + build).
  *
  * The @theme block registers Tailwind v4 design tokens as CSS custom
- * properties. After changing brand.ts, update the hex codes below to match.
+ * properties. The color + radius tokens between the GENERATED markers below
+ * are written from brand.ts by scripts/generate-theme.ts — do not edit them
+ * by hand, they will be overwritten. Everything outside the markers (the fluid
+ * type scale, spacing, and font wiring) is hand-tuned and safe to edit here.
  *
  * Fonts are injected by Astro 6's built-in font optimizer (astro.config.mjs).
  * The --font-body and --font-display variables are available here automatically.
@@ -11,6 +15,7 @@
  */
 
 @theme {
+  /* GENERATED:START — from src/config/brand.ts. Do not edit by hand. */
   /* ── Brand Colors ───────────────────────────────────────────────── */
   --color-primary:       #182754;
   --color-primary-light: #2A3F7E;
@@ -34,6 +39,7 @@
   --radius-md:   0.625rem;
   --radius-lg:   1rem;
   --radius-full: 9999px;
+  /* GENERATED:END */
 
   /* ── Fluid Type Scale ───────────────────────────────────────────── */
   --text-topper:  clamp(0.75rem, 1.4vw, 0.875rem);

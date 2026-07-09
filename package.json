@@ -18,7 +18,10 @@
     "node": ">=22.12.0"
   },
   "scripts": {
+    "generate:theme": "node --experimental-strip-types scripts/generate-theme.ts",
+    "predev": "pnpm run generate:theme",
     "dev": "astro dev",
+    "prebuild": "pnpm run generate:theme",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",

@@ -4,6 +4,8 @@
  * ─────────────────────────────────────────────────────────────────────────────
  */
 
+import { brand } from '../config/brand';
+
 export const client = {
   name: 'Marlinco',
   email: 'mari@marlinco.nl',
@@ -24,7 +26,7 @@ export const client = {
     instagram: '',
     google: 'https://maps.app.goo.gl/dBn7C6MQP7JcP8d36',
   },
-  domain: 'https://www.marlinco.nl',
+  domain: brand.url,
   serviceAreas: [
     'Papendrecht',
     'Dordrecht',

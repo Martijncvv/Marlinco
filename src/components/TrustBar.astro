@@ -1,19 +1,11 @@
 ---
-interface TrustItem {
-  label: string;
-  value?: string;
-}
+import { home, type TrustItem } from '../data/content';
 
 interface Props {
-  items?: TrustItem[];
+  items?: readonly TrustItem[];
 }
 
-const { items = [
-  { label: 'Jaar ervaring', value: '20+' },
-  { label: 'Projecten gerealiseerd', value: '500+' },
-  { label: 'Direct contact met de vakman' },
-  { label: 'Gevestigd in Drechtsteden' },
-] } = Astro.props;
+const { items = home.trustBar } = Astro.props;
 ---
 
 <section class="border-y border-border bg-surface" aria-label="Vertrouwenssignalen">

@@ -1,8 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
-import { brand } from '../config/brand';
 import { heroImage as localHeroImage } from '../config/images';
+import { home } from '../data/content';
 
 const PLACEHOLDER = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1600&q=80';
 
@@ -17,13 +17,13 @@ interface Props {
 }
 
 const {
-  topper = 'Sinds 2009 in Papendrecht',
-  heading = brand.tagline,
-  description = 'Marlinco is uw betrouwbare partner voor alle klussen in en om huis. Van overkappingen en schuren tot tuinaanleg, bestrating, schuttingen en (kunst)gras — vakmanschap waar u op kunt rekenen.',
-  ctaLabel = 'Bespreek uw project',
-  ctaHref = '/#contact',
+  topper = home.hero.topper,
+  heading = home.hero.heading,
+  description = home.hero.description,
+  ctaLabel = home.hero.ctaLabel,
+  ctaHref = home.hero.ctaHref,
   imageSrc = localHeroImage ?? PLACEHOLDER,
-  imageAlt = 'Sfeervolle achtertuin met klinkerbestrating, houten pergola\'s, schutting en kleurrijke beplanting',
+  imageAlt = home.hero.imageAlt,
 } = Astro.props;
 ---
 

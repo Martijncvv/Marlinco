@@ -6,6 +6,7 @@
 
 import type { ImageMetadata } from 'astro';
 import { client } from '../data/client';
+import { serviceBySlug, serviceHref } from '../data/services';
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
 import heroImageSrc from '../assets/images/services/schuttingen/papendrecht-29-bestrating-schutting.jpg';
@@ -160,8 +161,8 @@ const schuttingenPlaceholders: GalleryImage[] = [
 
 export const serviceProjects: ServiceProjectGroup[] = [
   {
-    service: 'Overkappingen & Schuren',
-    href: '/overkappingen-schuren',
+    service: serviceBySlug['overkappingen-schuren'].name,
+    href: serviceHref('overkappingen-schuren'),
     images: overkappingenDiscovered.length > 0
       ? pickByFilename(overkappingenDiscovered, [
           'papendrecht-16-overkapping.jpeg',
@@ -170,8 +171,8 @@ export const serviceProjects: ServiceProjectGroup[] = [
       : overkappingenPlaceholders.slice(0, 2),
   },
   {
-    service: 'Tuinaanleg & bestrating',
-    href: '/tuinaanleg',
+    service: serviceBySlug['tuinaanleg'].name,
+    href: serviceHref('tuinaanleg'),
     images: tuinaanlegDiscovered.length > 0
       ? pickByFilename(tuinaanlegDiscovered, [
           'bestrating-28.jpeg',
@@ -180,8 +181,8 @@ export const serviceProjects: ServiceProjectGroup[] = [
       : tuinaanlegPlaceholders.slice(0, 2),
   },
   {
-    service: 'Schuttingen',
-    href: '/schuttingen',
+    service: serviceBySlug['schuttingen'].name,
+    href: serviceHref('schuttingen'),
     images: schuttingenDiscovered.length > 0
       ? pickByFilename(schuttingenDiscovered, [
           'papendrecht-29-bestrating-schutting.jpg',

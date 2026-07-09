@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { galleryImages as defaultImages } from "../config/images";
 import type { GalleryImage } from "../config/images";
+import { site } from "../data/content";
 
 interface Props {
   topper?: string;
@@ -17,8 +18,8 @@ const {
   heading,
   description,
   images = defaultImages,
-  ctaLabel = "Bekijk alle projects",
-  ctaHref = "/overkappingen-schuren",
+  ctaLabel = site.gallery.ctaLabel,
+  ctaHref = site.gallery.ctaHref,
 } = Astro.props;
 ---
 

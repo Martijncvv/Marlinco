@@ -1,4 +1,7 @@
 ---
+import { home } from '../data/content';
+import { services as serviceData, serviceHref } from '../data/services';
+
 interface ServiceItem {
   title: string;
   description: string;
@@ -22,26 +25,14 @@ const icons = [
 ];
 
 const {
-  topper = 'Onze diensten',
-  heading = 'Wat wij voor u doen',
-  description = 'Van een sfeervolle overkapping tot een strakke oprit — wij leveren vakwerk met oog voor detail en persoonlijk advies.',
-  services = [
-    {
-      title: 'Overkappingen & Schuren',
-      description: 'Overkappingen, veranda\'s, buitenkeukens en schuren op maat — wij ontwerpen en bouwen constructies die perfect passen bij uw woning en tuin. Duurzame materialen en een nette afwerking zijn onze standaard.',
-      href: '/overkappingen-schuren',
-    },
-    {
-      title: 'Tuinaanleg & bestrating',
-      description: 'Van opritten, terrassen en tuinpaden tot houten vlonders, stenen trappen, plantenbakken, kunstgras en natuurgras — wij leggen aan wat er niet alleen mooi uitziet, maar ook jarenlang stevig blijft liggen. Altijd met de juiste afwatering en een strak resultaat.',
-      href: '/tuinaanleg',
-    },
-    {
-      title: 'Schuttingen',
-      description: 'Privacy en een mooie afscheiding gaan bij ons hand in hand. Wij plaatsen schuttingen in diverse stijlen en materialen, afgestemd op uw wensen en de uitstraling van uw tuin.',
-      href: '/schuttingen',
-    },
-  ],
+  topper = home.servicesSection.topper,
+  heading = home.servicesSection.heading,
+  description = home.servicesSection.description,
+  services = serviceData.map((s) => ({
+    title: s.name,
+    description: s.cardDescription,
+    href: serviceHref(s.slug),
+  })),
 } = Astro.props;
 ---
 

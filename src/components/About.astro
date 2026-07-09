@@ -2,32 +2,26 @@
 import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import { aboutImage as localAboutImage } from '../config/images';
+import { home } from '../data/content';
 
 const PLACEHOLDER = 'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&q=80';
 
 interface Props {
   topper?: string;
   heading?: string;
-  body?: string[];
-  benefits?: string[];
+  body?: readonly string[];
+  benefits?: readonly string[];
   imageSrc?: ImageMetadata | string;
   imageAlt?: string;
 }
 
 const {
-  topper = 'Wie zijn wij',
-  heading = 'Al sinds 2009 uw partner voor huis en tuin',
-  body = [
-    'Sinds 2009 is Marlinco het eenmansbedrijf van M. van Veen uit Papendrecht. Eén vast aanspreekpunt van begin tot eind, en inmiddels een vertrouwde naam in de Drechtsteden en omstreken — actief in Dordrecht, Sliedrecht, Zwijndrecht, Hendrik-Ido-Ambacht, Alblasserdam, Ridderkerk, de Alblasserwaard en daarbuiten.',
-    'Wij geloven dat goede ideeën ontstaan door creatief denken. Daarom denken we graag met u mee om samen tot het beste resultaat te komen — van ontwerp tot oplevering.',
-  ],
-  benefits = [
-    'Vakkundig en ervaren sinds 2009',
-    'Persoonlijke aanpak en kort contact',
-    'Kwaliteit waar u op kunt rekenen',
-  ],
+  topper = home.about.topper,
+  heading = home.about.heading,
+  body = home.about.body,
+  benefits = home.about.benefits,
   imageSrc = localAboutImage ?? PLACEHOLDER,
-  imageAlt = 'Marlinco aan het werk in een tuin',
+  imageAlt = home.about.imageAlt,
 } = Astro.props;
 ---
 

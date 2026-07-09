@@ -1,5 +1,8 @@
 ---
 import { client } from '../data/client';
+import { site } from '../data/content';
+
+const whatsappHref = `https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=${encodeURIComponent(site.contact.whatsappMessage)}`;
 ---
 
 <section id="contact" class="bg-surface py-section scroll-mt-20">
@@ -8,9 +11,9 @@ import { client } from '../data/client';
 
       <!-- Form -->
       <div class="lg:col-span-3">
-        <h2 class="font-heading text-h2 font-bold uppercase text-text">Stuur ons een bericht</h2>
+        <h2 class="font-heading text-h2 font-bold uppercase text-text">{site.contact.heading}</h2>
         <p class="mt-2 mb-8 text-text-muted">
-          Vul het formulier in voor een vrijblijvende reactie, of bel of WhatsApp ons direct.
+          {site.contact.subcopy}
         </p>
 
         <form
@@ -90,7 +93,7 @@ import { client } from '../data/client';
         <div>
           <h3 class="font-heading text-lg font-semibold text-text">WhatsApp</h3>
           <a
-            href={`https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=Hallo%2C%20ik%20heb%20een%20vraag%20over%20jullie%20diensten.`}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             class="mt-1 block text-primary-light font-medium transition-colors hover:text-primary"
