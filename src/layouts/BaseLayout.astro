@@ -13,7 +13,7 @@ import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { site } from '../data/content';
 
-const whatsappHref = `https://wa.me/${client.phoneForTel.replace(/[-\s]/g, '').replace(/^0/, '31')}?text=${encodeURIComponent(site.contact.whatsappMessage)}`;
+const whatsappHref = `https://wa.me/${client.phoneForTel.replace(/\D/g, '').replace(/^0/, '31')}?text=${encodeURIComponent(site.contact.whatsappMessage)}`;
 
 interface Props {
   title?: string;

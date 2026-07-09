@@ -9,8 +9,9 @@ import { client } from '../data/client';
 import { serviceBySlug, serviceHref } from '../data/services';
 
 // ── Hero ──────────────────────────────────────────────────────────────────────
-import heroImageSrc from '../assets/images/services/schuttingen/papendrecht-29-bestrating-schutting.jpg';
-export const heroImage: ImageMetadata = heroImageSrc;
+// Nog geen eigen hero-foto. Hero.astro valt automatisch terug op een placeholder
+// tot er een nieuwe foto in /src/assets/images/hero/ wordt gezet.
+export const heroImage: ImageMetadata | undefined = undefined;
 
 // ── About ─────────────────────────────────────────────────────────────────────
 import aboutImageSrc from '../assets/images/about/mari-tuin-werk.png';
@@ -84,8 +85,6 @@ export interface ServiceProjectGroup {
 
 // Metadata.json per service-map: { "<bestand>.jpeg": "Nederlandse alt-tekst" }
 import overkappingenMeta from '../assets/images/services/overkappingen-schuren/metadata.json';
-import tuinaanlegMeta from '../assets/images/services/tuinaanleg/metadata.json';
-import schuttingenMeta from '../assets/images/services/schuttingen/metadata.json';
 
 type AltMap = Record<string, string>;
 
@@ -118,45 +117,13 @@ const overkappingenDiscovered = discoverService(
   overkappingenMeta as AltMap,
 );
 
-const tuinaanlegDiscovered = discoverService(
-  import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/services/tuinaanleg/*.{jpg,jpeg,png,webp,avif}',
-    { eager: true },
-  ),
-  tuinaanlegMeta as AltMap,
-);
-
-const schuttingenDiscovered = discoverService(
-  import.meta.glob<{ default: ImageMetadata }>(
-    '../assets/images/services/schuttingen/*.{jpg,jpeg,png,webp,avif}',
-    { eager: true },
-  ),
-  schuttingenMeta as AltMap,
-);
-
 export const overkappingenImages: GalleryImage[] =
   overkappingenDiscovered.length > 0 ? overkappingenDiscovered : [];
-export const tuinaanlegImages: GalleryImage[] =
-  tuinaanlegDiscovered.length > 0 ? tuinaanlegDiscovered : [];
-export const schuttingenImages: GalleryImage[] =
-  schuttingenDiscovered.length > 0 ? schuttingenDiscovered : [];
 
 const overkappingenPlaceholders: GalleryImage[] = [
   { src: 'https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80', alt: 'Grote houten overkapping over terras' },
   { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80', alt: 'Moderne tuinschuur in achtertuin' },
   { src: 'https://images.unsplash.com/photo-1572120360610-d971b9d7767c?w=600&q=80', alt: 'Compacte overkapping bij voordeur' },
-];
-
-const tuinaanlegPlaceholders: GalleryImage[] = [
-  { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80', alt: 'Strak bestrate oprit met klinkers' },
-  { src: 'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80', alt: 'Terras met sierbestrating' },
-  { src: 'https://images.unsplash.com/photo-1600573472592-401b489a3cdc?w=600&q=80', alt: 'Klein tuinpad met verlichting' },
-];
-
-const schuttingenPlaceholders: GalleryImage[] = [
-  { src: 'https://images.unsplash.com/photo-1600566753376-12c8ab7a5a0c?w=600&q=80', alt: 'Hoge houten schutting met beplanting' },
-  { src: 'https://images.unsplash.com/photo-1503594384566-461fe158e797?w=600&q=80', alt: 'Strakke moderne schutting in voortuin' },
-  { src: 'https://images.unsplash.com/photo-1597844808175-39bba3d29bd0?w=600&q=80', alt: 'Lage erfafscheiding van hardhout' },
 ];
 
 export const serviceProjects: ServiceProjectGroup[] = [
@@ -169,25 +136,5 @@ export const serviceProjects: ServiceProjectGroup[] = [
           'sliedrecht-5-overkapping.jpeg',
         ])
       : overkappingenPlaceholders.slice(0, 2),
-  },
-  {
-    service: serviceBySlug['tuinaanleg'].name,
-    href: serviceHref('tuinaanleg'),
-    images: tuinaanlegDiscovered.length > 0
-      ? pickByFilename(tuinaanlegDiscovered, [
-          'bestrating-28.jpeg',
-          'bestrating-5.jpeg',
-        ])
-      : tuinaanlegPlaceholders.slice(0, 2),
-  },
-  {
-    service: serviceBySlug['schuttingen'].name,
-    href: serviceHref('schuttingen'),
-    images: schuttingenDiscovered.length > 0
-      ? pickByFilename(schuttingenDiscovered, [
-          'papendrecht-29-bestrating-schutting.jpg',
-          'divers-12-schuttingen.jpeg',
-        ])
-      : schuttingenPlaceholders.slice(0, 2),
   },
 ];

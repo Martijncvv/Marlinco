@@ -8,9 +8,9 @@ import { brand } from '../config/brand';
 
 export const client = {
   name: 'Marlinco',
-  email: 'mari@marlinco.nl',
-  phoneForTel: '06-26742521',
-  phoneFormatted: '06 26 74 25 21',
+  email: 'info@marcovanveen.nl',
+  phoneForTel: '+31624950189',
+  phoneFormatted: '+31 6 24950189',
   license: '',
   address: {
     lineOne: 'Matena 22',
