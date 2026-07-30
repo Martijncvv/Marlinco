@@ -8,7 +8,14 @@ export default defineConfig({
   site: 'https://www.marlinco.nl',
   output: 'static',
 
-  integrations: [sitemap(), robotsTxt()],
+  integrations: [
+    sitemap({
+      // Bedankt-/bevestigingspagina's horen niet in de zoekresultaten. Deze
+      // dragen ook `noindex` — de sitemap moet dat niet tegenspreken.
+      filter: (page) => !page.includes('/contact/success'),
+    }),
+    robotsTxt(),
+  ],
 
   fonts: [
     {

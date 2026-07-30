@@ -17,6 +17,8 @@ interface Props {
   description?: string;
   image?: string;
   schema?: Record<string, unknown>;
+  /** Houd deze pagina uit Google — bv. bedankt-/bevestigingspagina's. */
+  noindex?: boolean;
 }
 
 const {
@@ -24,6 +26,7 @@ const {
   description = brand.description,
   image = '/og-image.jpg',
   schema,
+  noindex = false,
 } = Astro.props;
 
 const pageTitle = title === brand.name ? title : `${title} | ${brand.name}`;
@@ -44,7 +47,11 @@ const ogImageURL = new URL(image, Astro.site ?? brand.url).toString();
     <!-- Sta Google een grote afbeeldingsthumbnail in de zoekresultaten toe -->
     <meta
       name="robots"
-      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+      content={
+        noindex
+          ? 'noindex, follow'
+          : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+      }
     />
 
     <!-- Open Graph -->
