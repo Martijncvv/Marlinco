@@ -8,9 +8,10 @@ import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { schuttingenFeatures as features } from '../data/services';
-import { schuttingenImages } from '../config/images';
+import { schuttingenImages, schemaImagesFor } from '../config/images';
 
 const pageUrl = new URL('/schuttingen', client.domain).toString();
+const schemaImages = schemaImagesFor('/schuttingen');
 
 const schema = {
   '@context': 'https://schema.org',
@@ -24,6 +25,7 @@ const schema = {
       provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
       url: pageUrl,
+      image: schemaImages,
     },
     {
       '@type': 'BreadcrumbList',
@@ -45,7 +47,7 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Schuttingen"
+  title="Schutting plaatsen in Papendrecht"
   description={`Houten schuttingen plaatsen in Papendrecht en de Drechtsteden — diverse houtsoorten, desgewenst op betonnen palen. Vakkundig gemonteerd door ${brand.name}. Vraag een vrijblijvende offerte aan.`}
   schema={schema}
 >

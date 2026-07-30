@@ -8,9 +8,10 @@ import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { overkappingenFeatures as features } from '../data/services';
-import { overkappingenImages } from '../config/images';
+import { overkappingenImages, schemaImagesFor } from '../config/images';
 
 const pageUrl = new URL('/overkappingen-schuren', client.domain).toString();
+const schemaImages = schemaImagesFor('/overkappingen-schuren');
 
 const schema = {
   '@context': 'https://schema.org',
@@ -24,6 +25,7 @@ const schema = {
       provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
       url: pageUrl,
+      image: schemaImages,
     },
     {
       '@type': 'BreadcrumbList',
@@ -45,7 +47,7 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Overkappingen & Schuren"
+  title="Overkapping & schuur op maat in Papendrecht"
   description={`Overkappingen, veranda's, buitenkeukens, tuinhuizen en schuren op maat in Papendrecht en de Drechtsteden. Duurzaam vakwerk door ${brand.name} sinds 2009. Vraag een vrijblijvende offerte aan.`}
   schema={schema}
 >

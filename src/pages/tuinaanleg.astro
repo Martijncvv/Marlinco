@@ -8,9 +8,10 @@ import CTA from '../components/CTA.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
 import { tuinaanlegFeatures as features } from '../data/services';
-import { tuinaanlegImages } from '../config/images';
+import { tuinaanlegImages, schemaImagesFor } from '../config/images';
 
 const pageUrl = new URL('/tuinaanleg', client.domain).toString();
+const schemaImages = schemaImagesFor('/tuinaanleg');
 
 const schema = {
   '@context': 'https://schema.org',
@@ -24,6 +25,7 @@ const schema = {
       provider: { '@type': 'LocalBusiness', name: client.name, url: client.domain },
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
       url: pageUrl,
+      image: schemaImages,
     },
     {
       '@type': 'BreadcrumbList',
@@ -45,7 +47,7 @@ const schema = {
 ---
 
 <BaseLayout
-  title="Tuinaanleg & bestrating"
+  title="Tuin aanleggen & bestraten in Papendrecht"
   description={`Tuinaanleg en bestrating: vlonders, stenen trappen, plantenbakken, kunstgras en natuurgras voor opritten, terrassen en tuinpaden in Papendrecht en de Drechtsteden. Vakkundig grondwerk door ${brand.name}. Vraag vrijblijvend uw offerte aan.`}
   schema={schema}
 >

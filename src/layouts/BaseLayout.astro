@@ -26,7 +26,7 @@ const {
   schema,
 } = Astro.props;
 
-const pageTitle = title === brand.name ? title : `${title} — ${brand.name}`;
+const pageTitle = title === brand.name ? title : `${title} | ${brand.name}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? brand.url);
 const ogImageURL = new URL(image, Astro.site ?? brand.url).toString();
 ---
@@ -40,6 +40,12 @@ const ogImageURL = new URL(image, Astro.site ?? brand.url).toString();
     <link rel="canonical" href={canonicalURL} />
     <title>{pageTitle}</title>
     <meta name="description" content={description} />
+
+    <!-- Sta Google een grote afbeeldingsthumbnail in de zoekresultaten toe -->
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
 
     <!-- Open Graph -->
     <meta property="og:type"             content="website" />

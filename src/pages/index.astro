@@ -10,6 +10,9 @@ import ProjectsByService from '../components/ProjectsByService.astro';
 import ContactForm from '../components/ContactForm.astro';
 import { brand } from '../config/brand';
 import { client } from '../data/client';
+import { serviceProjects, absoluteImageURL } from '../config/images';
+
+const schemaImages = serviceProjects.map((group) => absoluteImageURL(group.images[0]));
 
 const schema = {
   '@context': 'https://schema.org',
@@ -31,6 +34,7 @@ const schema = {
       url: client.domain,
       areaServed: client.serviceAreas.map((name) => ({ '@type': 'City', name })),
       sameAs: [client.socials.google],
+      image: schemaImages,
     },
     {
       '@type': 'Organization',
@@ -45,7 +49,7 @@ const schema = {
 ---
 
 <BaseLayout
-  title={brand.name}
+  title="Overkappingen, schuren & tuinaanleg Papendrecht"
   description={brand.description}
   schema={schema}
 >

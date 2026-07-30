@@ -71,6 +71,7 @@ const placeholders: GalleryImage[] = [
 
 export const galleryImages: GalleryImage[] = discovered.length > 0 ? discovered : placeholders;
 
+
 // ── Projects by service (homepage 3-kolommen blok) ───────────────────────────
 // Drop eigen foto's in /src/assets/images/projects/<dienst>/ — drie per dienst.
 // Geen foto's gevonden? Dan worden de Unsplash-placeholders gebruikt.
@@ -190,3 +191,22 @@ export const serviceProjects: ServiceProjectGroup[] = [
       : schuttingenPlaceholders.slice(0, 2),
   },
 ];
+
+// ── Structured data ──────────────────────────────────────────────────────────
+// Google kiest de thumbnail in de zoekresultaten op basis van o.a. de `image`
+// van de schema.org-entiteit. Die moet een absolute URL zijn — vandaar deze
+// helper, die de gebuildde asset-URL omzet naar een volledige URL.
+export function absoluteImageURL(image?: GalleryImage): string {
+  const src = image?.src;
+  const path = typeof src === 'string' ? src : src?.src;
+  return new URL(path ?? '/og-image.jpg', client.domain).toString();
+}
+
+// Foto voor de `image` van een dienstpagina. Bewust één foto en niet de hele
+// groep: geef je Google meerdere opties, dan kiest hij zelf — met één sterke
+// foto bepaal je de thumbnail. Het is de eerste uit `serviceProjects`, dus daar
+// stuur je hem bij (de rest van de groep blijft het homepage-blok vullen).
+export function schemaImagesFor(href: string): string[] {
+  const primary = serviceProjects.find((g) => g.href === href)?.images[0];
+  return primary ? [absoluteImageURL(primary)] : [];
+}
